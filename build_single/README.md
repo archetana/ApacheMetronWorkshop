@@ -31,6 +31,7 @@ unzip master.zip
 cd ApacheMetronWorkshop-master/build_single/
 ./sethostname.sh
 sudo crontab -e
+#Add metadata for the instance key=hostname, value=mobius.local.localdomain
 #Add the following to the crontab
 @reboot hostname $(curl --silent "http://metadata.google.internal/computeMetadata/v1/instance/attributes/hostname" -H "Metadata-Flavor: Google")
 #reboot
