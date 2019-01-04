@@ -30,6 +30,11 @@ unzip master.zip
 ```
 cd ApacheMetronWorkshop-master/build_single/
 ./sethostname.sh
+sudo crontab -e
+#Add the following to the crontab
+@reboot hostname $(curl --silent "http://metadata.google.internal/computeMetadata/v1/instance/attributes/hostname" -H "Metadata-Flavor: Google")
+#reboot
+sudo reboot
 ```
 
 4. Log into the host and run the buld script.  The build script output will print to the console and be logged to build_single.log.
